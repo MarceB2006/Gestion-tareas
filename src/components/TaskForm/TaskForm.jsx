@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { FaSave } from 'react-icons/fa'; 
 
 function TaskForm({ task, onSave }) {
   const [title, setTitle] = useState(task ? task.title : '');
@@ -80,8 +81,8 @@ function TaskForm({ task, onSave }) {
         className="border p-2 mb-2 w-full"
         ref={descriptionInputRef}
       />
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded mr-2">
-        Guardar
+      <button type="submit" className="bg-blue-500 text-white p-2 rounded mr-2 flex items-center">
+        <FaSave className="mr-2" /> Guardar
       </button>
     </form>
   );

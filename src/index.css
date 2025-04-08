@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Playwrite+ID:wght@100..400&family=Ponomar&family=Share+Tech+Mono&display=swap');
+
 /* Variables de color para consistencia */
 :root {
   --primary-color: #17499a;
@@ -28,9 +30,9 @@ html {
 }
 
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background: linear-gradient(to bottom, var(--background-light), var(--background-dark));
   color: var(--text-color);
+  font-weight: 400;
   line-height: 1.6;
   min-height: 100vh;
   min-width: 320px;

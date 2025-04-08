@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaCheck, FaEdit, FaTrash, FaSave, FaTimes } from 'react-icons/fa';
 
 function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
   const [editingTaskId, setEditingTaskId] = useState(null);
@@ -28,7 +29,7 @@ function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
         <div key={task.id} className="border p-2 mb-2">
           {editingTaskId === task.id ? (
             <div>
-              <div style={{display: 'flex', gap: '10px'}}>
+              <div style={{ display: 'flex', gap: '10px' }}>
                 <input
                   type="text"
                   value={editedTitle}
@@ -40,7 +41,7 @@ function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
                   value={editedDescription}
                   onChange={(e) => setEditedDescription(e.target.value)}
                   className="border p-1 mb-1 w-full"
-                  style={{ flex: 1, textAlign: 'center'}}
+                  style={{ flex: 1, textAlign: 'center' }}
                 />
               </div>
               <div>
@@ -48,13 +49,13 @@ function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
                   onClick={() => handleSaveEdit(task)}
                   className="bg-blue-500 text-white p-1 rounded mr-2"
                 >
-                  Guardar
+                  <FaSave size={16} className="inline-block mr-1" /> Guardar
                 </button>
                 <button
                   onClick={() => setEditingTaskId(null)}
                   className="bg-gray-300 p-1 rounded"
                 >
-                  Cancelar
+                  <FaTimes size={16} className="inline-block mr-1" /> Cancelar
                 </button>
               </div>
             </div>
@@ -66,19 +67,19 @@ function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
                 onClick={() => onTaskUpdate({ ...task, completed: !task.completed })}
                 className="bg-green-500 text-white p-1 rounded mr-2"
               >
-                {task.completed ? 'Desmarcar' : 'Completar'}
+                <FaCheck size={16} className="inline-block mr-1" /> {task.completed ? 'Desmarcar' : 'Completar'}
               </button>
               <button
                 onClick={() => handleEdit(task)}
                 className="bg-blue-500 text-white p-1 rounded mr-2"
               >
-                Editar
+                <FaEdit size={16} className="inline-block mr-1" /> Editar
               </button>
               <button
                 onClick={() => onTaskDelete(task.id)}
                 className="bg-red-500 text-white p-1 rounded"
               >
-                Eliminar
+                <FaTrash size={16} className="inline-block mr-1" /> Eliminar
               </button>
             </div>
           )}
