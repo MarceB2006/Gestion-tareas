@@ -19,8 +19,8 @@
 /* Estilos base */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 2px;
+  padding: 0.5px;
 }
 
 html {
@@ -60,7 +60,7 @@ button {
   padding: 0.8em 1.6em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: var(--button-background);
   color: var(--button-text);
   cursor: pointer;
@@ -108,6 +108,7 @@ form label {
   text-align: center;
   display: block;
   margin-bottom: 8px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 form input,
@@ -120,6 +121,7 @@ form textarea {
   color: var(--text-color);
   background-color: white;
   box-shadow: 0 2px 4px var(--shadow-color);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 form input:focus,
@@ -136,6 +138,7 @@ form textarea {
 /* Estilos de componentes (Tailwind) */
 .button {
   @apply bg-blue-500 text-white py-2 px-4 rounded-md transition-all duration-300;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .button:hover {
@@ -157,6 +160,7 @@ form textarea {
   max-width: 600px;
   position: relative;
   border: 1px solid var(--border-color);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .card h3,
@@ -165,6 +169,7 @@ form textarea {
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .card h3 {
@@ -179,14 +184,17 @@ form textarea {
 .task-item {
   @apply border p-4 mb-4 rounded-lg shadow-sm;
   background-color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .task-item h3 {
   @apply text-lg font-semibold mb-2;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .task-item p {
   @apply mb-4;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .task-item .task-actions {
@@ -195,16 +203,19 @@ form textarea {
 
 .task-item .task-actions button {
   @apply py-2 px-4 rounded-md;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .task-item .task-actions .edit-input {
   @apply border p-2 mb-2 w-full;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .task-item .task-actions .edit-textarea {
   @apply border p-2 mb-2 w-full;
   resize: vertical;
   min-height: 100px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Utilidades personalizadas (Tailwind) */

@@ -1,14 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function TaskForm({ task, onSave }) {
   const [title, setTitle] = useState(task ? task.title : '');
   const [description, setDescription] = useState(task ? task.description : '');
+  const titleInputRef = useRef(null);
+  const descriptionInputRef = useRef(null);
+  const minLength = 5;
+  const maxLength = 100;
+
+  useEffect(() => {
+    if (!task) {
+      if (titleInputRef.current) {
+        titleInputRef.current.focus();
+      }
+    }
+  }, [task]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!title.trim() || !description.trim()) {
       alert('Por favor, ingrese un título y una descripción.');
+      return;
+    }
+
+    if (title.length < minLength || description.length < minLength) {
+      alert(`El título y la descripción deben tener al menos ${minLength} caracteres.`);
+      return;
+    }
+
+    if (title.length > maxLength || description.length > maxLength) {
+      alert(`El título y la descripción no deben superar los ${maxLength} caracteres.`);
       return;
     }
 
@@ -20,16 +42,24 @@ function TaskForm({ task, onSave }) {
     }
 
     onSave({ ...task, title, description });
-    setTitle(''); // Limpiar el título después de guardar.
-    setDescription(''); // Limpiar la descripción después de guardar.
+    setTitle('');
+    setDescription('');
   };
 
   const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+    if (e.target.value.length <= maxLength) {
+      setTitle(e.target.value);
+    }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      descriptionInputRef.current.focus();
+    }
   };
 
   const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
+    if (e.target.value.length <= maxLength) {
+      setDescription(e.target.value);
+    }
   };
 
   return (
@@ -38,16 +68,21 @@ function TaskForm({ task, onSave }) {
         type="text"
         value={title}
         onChange={handleTitleChange}
-        placeholder="Título"
+        placeholder={`Título (Min ${minLength}, Max ${maxLength})`}
         className="border p-2 mb-2 w-full"
+        ref={titleInputRef}
+        onKeyDown={handleTitleChange}
       />
       <textarea
         value={description}
         onChange={handleDescriptionChange}
-        placeholder="Descripción"
+        placeholder={`Descripción (Min ${minLength}, Max ${maxLength})`}
         className="border p-2 mb-2 w-full"
+        ref={descriptionInputRef}
       />
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded mr-2">Guardar</button>
+      <button type="submit" className="bg-blue-500 text-white p-2 rounded mr-2">
+        Guardar
+      </button>
     </form>
   );
 }
