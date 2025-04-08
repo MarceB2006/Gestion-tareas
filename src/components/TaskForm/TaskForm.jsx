@@ -20,6 +20,8 @@ function TaskForm({ task, onSave }) {
     }
 
     onSave({ ...task, title, description });
+    setTitle(''); // Limpiar el título después de guardar.
+    setDescription(''); // Limpiar la descripción después de guardar.
   };
 
   const handleTitleChange = (e) => {
