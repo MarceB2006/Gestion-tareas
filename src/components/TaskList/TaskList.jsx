@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCheck, FaEdit, FaTrash, FaSave, FaTimes } from 'react-icons/fa';
+import { FaCheck, FaEdit, FaTrash, FaSave, FaTimes, FaRegCircle } from 'react-icons/fa';
 
 function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
   const [editingTaskId, setEditingTaskId] = useState(null);
@@ -23,10 +23,18 @@ function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
     setEditingTaskId(null);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   return (
-    <div>
+    <div className="card-container">
       {filteredTasks.map(task => (
-        <div key={task.id} className="border p-2 mb-2">
+        <div key={task.id} className="card">
           {editingTaskId === task.id ? (
             <div>
               <div style={{ display: 'flex', gap: '10px' }}>
@@ -44,7 +52,7 @@ function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
                   style={{ flex: 1, textAlign: 'center' }}
                 />
               </div>
-              <div>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button
                   onClick={() => handleSaveEdit(task)}
                   className="bg-blue-500 text-white p-1 rounded mr-2"
@@ -63,11 +71,20 @@ function TaskList({ tasks, filter, onTaskUpdate, onTaskDelete }) {
             <div>
               <h3>{task.title}</h3>
               <p>{task.description}</p>
+              <p>Fecha de creación: {formatDate(task.createdAt)}</p>
               <button
                 onClick={() => onTaskUpdate({ ...task, completed: !task.completed })}
                 className="bg-green-500 text-white p-1 rounded mr-2"
               >
-                <FaCheck size={16} className="inline-block mr-1" /> {task.completed ? 'Desmarcar' : 'Completar'}
+                {task.completed ? (
+                  <>
+                    <FaCheck size={16} className="inline-block mr-1" /> Completada
+                  </>
+                ) : (
+                  <>
+                    <FaRegCircle size={16} className="inline-block mr-1" /> Sin completar
+                  </>
+                )}
               </button>
               <button
                 onClick={() => handleEdit(task)}

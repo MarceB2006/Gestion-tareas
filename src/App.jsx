@@ -4,6 +4,7 @@ import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
 import TaskFilter from './components/TaskFilter/TaskFilter';
 import TaskStats from './components/TaskStats/TaskStats';
+import Footer from './components/Footer/Footer';
 
 const initialTasks = [
   {
@@ -68,14 +69,14 @@ function App() {
   };
 
   const handleEditTask = (task) => {
-    setEditingTask(task); // Establece la tarea a editar
+    setEditingTask(task);
   };
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 min-h-screen">
       <h1 className="text-4xl font-extrabold text-center text-blue-600 mb-6">Lista de Tareas</h1>
       <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <TaskForm task={editingTask} onSave={addOrUpdateTask} /> {/* Quitar onCancel */}
+        <TaskForm task={editingTask} onSave={addOrUpdateTask} />
         <TaskFilter filter={filter} onFilterChange={setFilter} />
         <TaskStats tasks={tasks} />
         <TaskList
@@ -83,9 +84,10 @@ function App() {
           filter={filter}
           onTaskUpdate={updateTask}
           onTaskDelete={deleteTask}
-          onEditTask={handleEditTask} // Pasar handleEditTask
+          onEditTask={handleEditTask}
         />
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -7,22 +7,22 @@ const TaskStats = ({ tasks }) => {
 
   return (
     <div
-      className="p-6 bg-white rounded-lg shadow-md border border-gray-200"
+      className="p-10 bg-white rounded-xl shadow-lg border border-gray-300"
       style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '1rem',
+        gap: '0.5rem',
       }}
     >
-      <FaClipboardList className="text-blue-500 text-2xl" />
-      <p className="text-lg font-semibold text-gray-700">
-        Pendientes: <span className="text-2xl font-bold text-blue-600">{pendingTasks}</span>
+      <FaClipboardList className="text-blue-500 text-5xl" />
+      <p className="text-2xl font-semibold text-gray-700">
+        Pendientes: <span className="text-4xl font-bold text-blue-600">{pendingTasks}</span>
       </p>
-      <span className="mx-2"> | </span>
-      <FaTasks className="text-gray-600 text-2xl" />
-      <p className="text-lg font-semibold text-gray-700">
-        Total: <span className="text-2xl font-bold text-gray-800">{totalTasks}</span>
+      <span className="mx-3"> | </span>
+      <FaTasks className="text-gray-600 text-5xl" />
+      <p className="text-2xl font-semibold text-gray-700">
+        Total: <span className="text-4xl font-bold text-gray-800">{totalTasks}</span>
       </p>
     </div>
   );
